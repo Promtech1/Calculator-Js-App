@@ -1,0 +1,69 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #91C1D9;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container .container-wrapper{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10rem;
+    
+}
+
+.screen{
+    width: 100%;
+    height: 90px;
+    background-color: #212121;
+    border-radius: .5rem .5rem 0 0;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 .5em;
+}
+
+.keys{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.keys button{
+    outline: none;
+    border: 1px solid #B0B0B0;
+}
+
+.key{
+    width: 120px;
+    padding: .7em 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.operator{
+    background-color: #EBEBEB;
+}
+
+.equal{
+    grid-row-start: span 6;
+    border-radius: 0 0 .5em 0;
+    background-color: #FE7D4D;
+}
+
+.zero{
+    border-radius: 0 0 0 .5em;
+}
