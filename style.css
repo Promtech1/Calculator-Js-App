@@ -14,12 +14,15 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 0 1em;
 }
 
 .container .container-wrapper{
     display: flex;
     flex-direction: column;
     border-radius: 10rem;
+    width: 400px;
+    background-color: #212121;
     
 }
 
@@ -48,7 +51,7 @@ body{
 }
 
 .key{
-    width: 120px;
+    max-width: 300px;
     padding: .7em 0;
     font-size: 1.5rem;
     cursor: pointer;
