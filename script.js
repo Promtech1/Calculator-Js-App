@@ -62,11 +62,6 @@ operators.forEach(function(operator){
             return
         }
 
-        
-
-        // console.log(`previous ${previousNum}`)
-        // console.log(`current ${currentOperand}`)
-
     })
 })
 
@@ -80,9 +75,6 @@ function calculate(){
     const previous = parseFloat(previousNum);
     const current = parseFloat(currentOperand);
     let result;
-
-    // console.log(`previous ${previous}`)
-    // console.log(`current ${current}`)
 
     if (selectedOperator === "+"){
         result = previous + current
@@ -101,7 +93,7 @@ function calculate(){
         screenUpdate = result
         currentOperand = result
     }
-    // currentOperand = result.toString();
+    
 }
 
 
@@ -120,59 +112,3 @@ clear.addEventListener('click', function(){
     screenUpdate = ''
     updateScreen()
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// operators.forEach(function(operator){
-//     operator.addEventListener('click', function(){
-//         isClicked = true;
-//         screen.textContent += operator.innerText
-
-//         if (previousNum !== null && selectedOperator !== null && currentOperand !== "") {
-//             calculate();
-//         } 
-//         selectedOperator = operator.innerText;
-//         previousNum = currentOperand;
-//         currentOperand = "";
-//     })
-// })
-
-
-
-
-
-
-// function calculate() {
-//     const previous = parseFloat(previousNum);
-//     const current = parseFloat(currentOperand);
-//     let result;
-    
-//     if (selectedOperator === "+") {
-//       result = previous + current;
-//     } else if (selectedOperator === "-") {
-//       result = previous - current;
-//     } else if (selectedOperator === "*") {
-//       result = previous * current;
-//     } else if (selectedOperator === "/") {
-//       result = previous / current;
-//     }
-    
-//     currentOperand = result.toString();
-//     previousNum = null;
-//     selectedOperator = null;
-//     updateScreen();
-// }
-  
-//   // Example usage
-// updateScreen();
