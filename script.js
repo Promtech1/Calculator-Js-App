@@ -2,11 +2,14 @@ let nums = document.querySelectorAll(".num")
 let screen = document.querySelector(".screen")
 let operators = document.querySelectorAll(".operator")
 let equal = document.querySelector(".equal")
+let clear = document.querySelector(".clear")
+let dot = document.querySelector(".dot")
 
 let currentOperand = "";
 let selectedOperator = null;
 let previousNum = null;
 let screenUpdate = ""
+
 
 
 nums.forEach(function (num) {
@@ -19,6 +22,15 @@ nums.forEach(function (num) {
     });
 });
 
+dot.addEventListener('click', function(){
+    if(currentOperand.includes('.')){
+        return
+    }else{
+        currentOperand += dot.textContent
+        screenUpdate += dot.textContent
+        updateScreen()
+    }
+})
 
 
 operators.forEach(function(operator){
@@ -94,11 +106,20 @@ function calculate(){
 
 
 equal.addEventListener('click', function(){
-    calculate()
-    previousNum = null
-    updateScreen()
+    if(previousNum !== null && currentOperand !== "" && selectedOperator !== null){
+        calculate()
+        previousNum = null
+        updateScreen()
+    }
 })
 
+clear.addEventListener('click', function(){
+    currentOperand = "";
+    selectedOperator = null;
+    previousNum = null;
+    screenUpdate = ''
+    updateScreen()
+})
 
 
 
