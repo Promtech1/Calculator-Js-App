@@ -14,16 +14,24 @@ let equalCurrent;
 let result;
 let equalCurr;
 
+//The next stuff to do is to update the equal to function and convert the result to a string and update the screen upate with it
+
 nums.forEach(function (num) {
     num.addEventListener('click', function() {
-        
         let clickedNum = num.innerText
-        currentOperand += clickedNum
-        screenUpdate += clickedNum
-        // console.log(`${result} ${selectedOperator} ${currentOperand}`)
-        updateScreen()
-        console.log(currentOperand)
         
+        if(screenUpdate.indexOf(previousNum) === 0 && selectedOperator === ""){
+            
+            screenUpdate += clickedNum
+            previousNum += clickedNum
+            console.log('okay')
+            updateScreen()
+        }else{
+            currentOperand += clickedNum
+            screenUpdate += clickedNum
+            // console.log(`${result} ${selectedOperator} ${currentOperand}`)
+            updateScreen()
+        }
     });
 });
 
@@ -50,10 +58,10 @@ operators.forEach(function(operator){
             return
         }
 
-        if(previousNum !== null && currentOperand !== "" && selectedOperator !== null ){
+        if(previousNum !== null && currentOperand !== "" && selectedOperator !== "" ){
             calculate()
             selectedOperator = operator.innerText
-            screenUpdate += ` ${operator.innerText} `
+            screenUpdate += ` ${operator.innerText}`
             updateScreen()
             previousNum = currentOperand;
             currentOperand = "";
@@ -66,6 +74,7 @@ operators.forEach(function(operator){
             previousNum = currentOperand;
             currentOperand = "";
         }
+        //This is when you do and equal to and want to perform another operation with the result
         if(selectedOperator === "" && previousNum !== null && currentOperand === ""){
             console.log('work')
             screenUpdate += ` ${operator.innerText} `
@@ -149,22 +158,18 @@ clear.addEventListener('click', function(){
 })
 
 function check(){
-    console.log(`${previousNum} ${selectedOperator} ${currentOperand}`)
+    console.log(`pre:${previousNum} op:${selectedOperator} cu:${currentOperand}`)
+    console.log(screenUpdate)
 }
 
 del.addEventListener('click', function(){
-    // let toString = result.toString()
-    // screenUpdate = screenUpdate.toString()
-    // if(screenUpdate.lastIndexOf(previousNum) && selectedOperator === "" && currentOperand === null){
-    //     console.log('lovve')
-    // }
     if(currentOperand !== "" &&  previousNum !== null && selectedOperator !== ""){
         currentOperand = currentOperand.slice(0, -1)
         screenUpdate = `${previousNum} ${selectedOperator} ${currentOperand}`
         updateScreen()
     }else if(previousNum !== null && selectedOperator !== "" && currentOperand === ""){
         selectedOperator = selectedOperator.slice(0, -1)
-        screenUpdate = `${previousNum} ${selectedOperator} ${currentOperand}`
+        screenUpdate = `${previousNum}`
         updateScreen()
     }else if(selectedOperator === "" && currentOperand === ""){
         previousNum = previousNum.slice(0, -1)
@@ -174,24 +179,12 @@ del.addEventListener('click', function(){
         currentOperand = currentOperand.slice(0, -1)
         screenUpdate = `${currentOperand}`
         updateScreen()
+    }else if(previousNum === null && selectedOperator !== "" && currentOperand !== ""){
+        currentOperand = currentOperand.slice(0, -1)
+        screenUpdate = `${currentOperand}`
+        updateScreen()
     }
     else{
-        return
+        return;
     }
-    
-    // if(result !== undefined){
-    //     let toString = currentOpernd.toString()
-    //     let resultString = result.toString()
-    //     currentOperand = toString.slice(0, -1)
-    //     result = resultString.slice(0, 1)
-    //     equalCurr = result
-    //     console.log(equalCurr)
-    //     screenUpdate = currentOperand
-    //     updateScreen()
-    // }
-
-    // if(previousNum !== null){
-    //     numSlice = screenUpdate.slice(0, -1)
-    //     previousNum = numSlice
-    // }
 })
