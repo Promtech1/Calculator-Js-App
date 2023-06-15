@@ -158,10 +158,10 @@ clear.addEventListener('click', function(){
     updateScreen()
 })
 
-function check(){
-    console.log(`pre:${previousNum} op:${selectedOperator} cu:${currentOperand}`)
-    console.log(screenUpdate)
-}
+// function check(){
+//     console.log(`pre:${previousNum} op:${selectedOperator} cu:${currentOperand}`)
+//     console.log(screenUpdate)
+// }
 
 del.addEventListener('click', function(){
     if(currentOperand !== "" &&  previousNum !== null && selectedOperator !== ""){
