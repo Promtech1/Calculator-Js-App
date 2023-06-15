@@ -35,6 +35,7 @@ nums.forEach(function (num) {
     });
 });
 
+//This do has an issue, it only appends to the current operand and not previous. Fix this.
 dot.addEventListener('click', function(){
     
     let text = currentOperand.toString()
@@ -98,49 +99,49 @@ function calculate(){
         result = previous + current
         screenUpdate = result
         equalCurrent = currentOperand
-        currentOperand = result
+        currentOperand = result.toString()
     }else if(selectedOperator === "-"){
         result = previous - current
         screenUpdate = result
         equalCurrent = currentOperand
-        currentOperand = result
+        currentOperand = result.toString()
     }else if(selectedOperator === "*"){
         result = previous * current
         screenUpdate = result
         equalCurrent = currentOperand
-        currentOperand = result
+        currentOperand = result.toString()
     }else if(selectedOperator === "/"){
         result = previous / current
         screenUpdate = result
         equalCurrent = currentOperand
-        currentOperand = result
+        currentOperand = result.toString()
     }
 }
 
 equal.addEventListener('click', function(){
     equalCurr = parseFloat(equalCurrent);
-
-    if(currentOperand !== "" && previousNum === null && selectedOperator === "+"){
-        result = result += equalCurr
-        screenUpdate = result
-        currentOperand = result
-        updateScreen()
-    }else if(currentOperand !== "" && previousNum === null && selectedOperator === "-"){
-        result = result -= equalCurr
-        screenUpdate = result
-        currentOperand = result
-        updateScreen()
-    }else if(currentOperand !== "" && previousNum === null && selectedOperator === "/"){
-        result = result /= equalCurr
-        screenUpdate = result
-        currentOperand = result
-        updateScreen()
-    }else if(currentOperand !== "" && previousNum === null && selectedOperator === "*"){
-        result = result *= equalCurr
-        screenUpdate = result
-        currentOperand = result
-        updateScreen()
-    }
+    //The commented code below is a functionality to make the calculate function run when clicked on multiple times
+    // if(currentOperand !== "" && previousNum === null && selectedOperator === "+"){
+    //     result = result += equalCurr
+    //     screenUpdate = result
+    //     currentOperand = result.toString()
+    //     updateScreen()
+    // }else if(currentOperand !== "" && previousNum === null && selectedOperator === "-"){
+    //     result = result -= equalCurr
+    //     screenUpdate = result
+    //     currentOperand = result.toString()
+    //     updateScreen()
+    // }else if(currentOperand !== "" && previousNum === null && selectedOperator === "/"){
+    //     result = result /= equalCurr
+    //     screenUpdate = result
+    //     currentOperand = result.toString()
+    //     updateScreen()
+    // }else if(currentOperand !== "" && previousNum === null && selectedOperator === "*"){
+    //     result = result *= equalCurr
+    //     screenUpdate = result
+    //     currentOperand = result.toString()
+    //     updateScreen()
+    // }
     
     if(previousNum !== null && currentOperand !== "" && selectedOperator !== null){
         calculate()
